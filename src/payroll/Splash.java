@@ -7,7 +7,7 @@ package payroll;
 import java.awt.*;
 import javax.swing.*;
 
-class splash{
+class Splash{
     public static void main(String s[]){
         sframe f1 = new sframe("Payroll System  Free Licence Version 2.0"); 
         f1.setVisible(true); //show
@@ -41,8 +41,9 @@ class sframe extends JFrame implements Runnable{
         try{
             Thread.sleep(7000);
             this.setVisible(false);
-           Login f1 = new Login();
-           //login_page f2=new login_page();
+          // Login f1 = new Login();
+           login_page f2=new login_page();
+           f2.setVisible(true);
             
         }catch(Exception e){
             e.printStackTrace(); 
