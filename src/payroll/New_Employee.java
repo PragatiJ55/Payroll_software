@@ -81,7 +81,7 @@ public class New_Employee extends JFrame implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent ae){
-       
+        
         String name = t1.getText();
         String gender = c1.getSelectedItem();
         String address = t3.getText();

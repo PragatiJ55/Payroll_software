@@ -37,30 +37,59 @@ public class Project extends JFrame implements ActionListener {
      b1.addActionListener(
   new ActionListener() {
     public void actionPerformed(ActionEvent e) {
-      JOptionPane.showMessageDialog(null, "Create employee");
+      new New_Employee().setVisible(true);
     }
   });
         JButton b2=new JButton("Salary");  
          b2.setFont(new Font("Calibri", Font.PLAIN, 18));
         b2.setBackground(new Color(0x002266));
         b2.setForeground(Color.white);
+  b2.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      new Salary().setVisible(true);
+    }
+  });
          JButton b3=new JButton("Update Salary"); 
           b3.setFont(new Font("Calibri", Font.PLAIN, 18));
         b3.setBackground(new Color(0x002266));
         b3.setForeground(Color.white);
+  b3.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      new Update_Salary().setVisible(true);
+    }
+  });
           JButton b4=new JButton("View Report");
            b4.setFont(new Font("Calibri", Font.PLAIN, 18));
         b4.setBackground(new Color(0x002266));
         b4.setForeground(Color.white);
-          JButton b5=new JButton("Take attendance"); 
+ b4.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      new pay_slip().setVisible(true);
+    }
+  });
+          JButton b5=new JButton("Update Employee"); 
            b5.setFont(new Font("Calibri", Font.PLAIN, 18));
         b5.setBackground(new Color(0x002266));
         b5.setForeground(Color.white);
-           JButton b6=new JButton("Print Report");  
+ b5.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      new Update_employee().setVisible(true);
+    }
+  });
+           JButton b6=new JButton("List Employees");  
             b6.setFont(new Font("Calibri", Font.PLAIN, 18));
         b6.setBackground(new Color(0x002266));
         b6.setForeground(Color.white);
-           
+            b6.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      new List_Employee().setVisible(true);
+    }
+  });
           
           
        
