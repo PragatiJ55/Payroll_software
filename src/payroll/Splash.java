@@ -42,7 +42,7 @@ class sframe extends JFrame implements Runnable{
             Thread.sleep(7000);
             this.setVisible(false);
           // Login f1 = new Login();
-           login_page f2=new login_page();
+           Login f2=new Login();
            f2.setVisible(true);
             
         }catch(Exception e){

@@ -15,21 +15,14 @@ public class pay_slip extends JFrame implements ActionListener{
 
     Choice c1;
     JTextArea t1;
-    JButton b1;
+    JButton b1,b2;
 
     pay_slip(){
         
         setSize(800,700);
         setLocation(400,150);
         c1 = new Choice();
-        try{
-            Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("select * from salary");
-            while(rs.next()){
-                c1.add(rs.getString("id"));
-            }
-        }catch(Exception e) { }
-    
+       
         setLayout(new BorderLayout());
         
         JPanel p1 = new JPanel();
@@ -37,18 +30,41 @@ public class pay_slip extends JFrame implements ActionListener{
         p1.add(c1);
         add(p1,"North");
         // c1.addItemListener(this);
-    
+
         t1 = new JTextArea(30,80);
         JScrollPane jsp = new JScrollPane(t1);
      
         Font f1 = new Font("arial",Font.BOLD,20);
         t1.setFont(f1);
         
-        b1 = new JButton("Generate Pay Slip");
     
-        add(b1,"South");
+        b1 = new JButton("Generate Pay Slip");
+    b2=new JButton("Print Pay Slip");
+ 
+  b2.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      try{
+           t1.print();
+        }catch(Exception ex){}
+    }
+  });
+JPanel subPanel = new JPanel();
+        subPanel.add( b1);
+        subPanel.add( b2);
+        add(subPanel,"South");
         add(jsp,"Center");
         b1.addActionListener(this);
+ try{
+            Conn c = new Conn();
+            ResultSet rs = c.s.executeQuery("select * from salary");
+
+            while(rs.next()){
+                c1.add(rs.getString("id"));
+
+            }
+        }catch(Exception e) { }
+    
     
     }
    

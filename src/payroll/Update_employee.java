@@ -20,21 +20,17 @@ public class Update_employee extends JFrame implements ActionListener,ItemListen
     Update_employee(){
         
         super("Update Employee");
+int i=0;
         
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
         
         c2 = new Choice();
         c2.setBounds(160,40,200,20);
+
+
        
-        try{
-            Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("select * from employee");
-      
-            while(rs.next()){
-                c2.add(rs.getString("id"));    
-            }
-        }catch(Exception e){ }
+
        
         emp = new JLabel("Select Empno");
         emp.setBounds(40,40,100,20);
@@ -118,6 +114,26 @@ public class Update_employee extends JFrame implements ActionListener,ItemListen
         b2.addActionListener(this);
         
         c2.addItemListener(this);
+        try{
+            Conn c = new Conn();
+            ResultSet rs = c.s.executeQuery("select * from employee");
+             if(rs.next()){
+                c2.add(rs.getString("id"));    
+                t1.setText(rs.getString("name"));
+                t3.setText(rs.getString("address"));
+                t4.setText(rs.getString("state"));
+                t5.setText(rs.getString("city"));
+                t6.setText(rs.getString("email"));
+                t7.setText(rs.getString("phone"));
+                c1.select(rs.getString("gender"));
+}
+            
+            while(rs.next()){
+                c2.add(rs.getString("id"));    
+ 
+              
+            }
+        }catch(Exception e){ }
         
         setVisible(true);
         setSize(400,550);
@@ -140,6 +156,7 @@ public class Update_employee extends JFrame implements ActionListener,ItemListen
                 Conn c1 = new Conn();
                 c1.s.executeUpdate(qry);
                 JOptionPane.showMessageDialog(null,"Employee Updated");
+this.setVisible(false);
             }catch(Exception ee){
                 ee.printStackTrace();
             }
@@ -159,8 +176,8 @@ public class Update_employee extends JFrame implements ActionListener,ItemListen
     
     public void itemStateChanged(ItemEvent ie){
         try{
-            Conn c1 = new Conn();
-            ResultSet rs = c1.s.executeQuery("select * from employee where id="+c2.getSelectedItem());
+            Conn conn = new Conn();
+            ResultSet rs = conn.s.executeQuery("select * from employee where id="+c2.getSelectedItem());
             
             if(rs.next()){
                 t1.setText(rs.getString("name"));
@@ -169,6 +186,7 @@ public class Update_employee extends JFrame implements ActionListener,ItemListen
                 t5.setText(rs.getString("city"));
                 t6.setText(rs.getString("email"));
                 t7.setText(rs.getString("phone"));
+c1.select(rs.getString("gender"));
             }
         }catch(Exception ee){
            ee.printStackTrace();

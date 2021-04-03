@@ -21,14 +21,7 @@ public class Update_Salary extends JFrame implements ActionListener,ItemListener
         
         setLayout(null);
         c2 = new Choice();
-        try{
-            Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("select * from salary");
-            while(rs.next()){
-                c2.add(rs.getString("id"));    
-            }
-           
-        }catch(Exception e){ }
+      
        
         JLabel emp = new JLabel("Select Empno");
         emp.setBounds(20,20,100,20);
@@ -95,6 +88,23 @@ public class Update_Salary extends JFrame implements ActionListener,ItemListener
         c2.addItemListener(this);
         
         getContentPane().setBackground(Color.WHITE);
+  try{
+            Conn c = new Conn();
+            ResultSet rs = c.s.executeQuery("select * from salary");
+if(rs.next()){
+c2.add(rs.getString("id"));   
+t1.setText(rs.getString("hra"));
+                t2.setText(rs.getString("da"));
+                t3.setText(rs.getString("med"));
+                t4.setText(rs.getString("pf"));
+                t5.setText(rs.getString("basic_salary"));
+}
+           
+            while(rs.next()){
+                c2.add(rs.getString("id"));    
+            }
+           
+        }catch(Exception e){ }
        
         setVisible(true);
         setSize(400,450);

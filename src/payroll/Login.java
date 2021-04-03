@@ -23,7 +23,7 @@ public class Login extends JFrame implements ActionListener{
         t1 = new JTextField(10);
         JLabel l = new JLabel(new ImageIcon(ClassLoader.getSystemResource("icon\\defaultpic.png")));
         
-        b1 = new JButton("Submit", new ImageIcon(ClassLoader.getSystemResource("icon\\login.jpg")));
+        b1 = new JButton("Login", new ImageIcon(ClassLoader.getSystemResource("icon\\login.jpg")));
         
         b1.addActionListener(this);
        

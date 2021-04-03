@@ -62,10 +62,37 @@ public class Salary extends JFrame implements ActionListener{
         add(t6);
        
         b1 =new JButton("Submit");
+ b1.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+       String hra = t1.getText();
+        String id = c2.getSelectedItem();
+        String da = t3.getText();
+        String med = t4.getText();
+        String pf = t5.getText();
+        String basic = t6.getText();
+        String qry = "insert into salary values("+ id +","+hra+","+da+","+med+","+pf+","+basic+")";
+       
+        try{
+            Conn c1 = new Conn();
+            c1.s.executeUpdate(qry);
+            JOptionPane.showMessageDialog(null,"Salary updated");
+            setVisible(false);
+        }catch(Exception ee){
+            ee.printStackTrace();
+        }
+    }
+  });
         b1.setBackground(Color.BLACK);
         b1.setForeground(Color.WHITE);
         
         b2 = new JButton("Cancel");
+ b2.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+     setVisible(false);
+    }
+  });
         b2.setBackground(Color.BLACK);
         b2.setForeground(Color.WHITE);
         
@@ -87,22 +114,7 @@ public class Salary extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent ae){
        
-        String hra = t1.getText();
-        String id = c2.getSelectedItem();
-        String da = t3.getText();
-        String med = t4.getText();
-        String pf = t5.getText();
-        String basic = t6.getText();
-        String qry = "insert into salary values("+ id +","+hra+","+da+","+med+","+pf+","+basic+")";
        
-        try{
-            Conn c1 = new Conn();
-            c1.s.executeUpdate(qry);
-            JOptionPane.showMessageDialog(null,"Salary updated");
-            this.setVisible(false);
-        }catch(Exception ee){
-            ee.printStackTrace();
-        }
     }
     
     public static void main(String[] args){

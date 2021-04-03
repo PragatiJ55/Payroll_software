@@ -62,7 +62,35 @@ public class New_Employee extends JFrame implements ActionListener{
         p1.add(l7);
         p1.add(t7);
         b1 =new JButton("Submit");
+ b1.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        String name = t1.getText();
+        String gender = c1.getSelectedItem();
+        String address = t3.getText();
+        String state = t4.getText();
+        String city = t5.getText();
+        String email = t6.getText();
+        String phone = t7.getText();
+        String qry = "insert into employee values(null,'"+name+"','"+gender+"','"+address+"','"+state+"','"+city+"','"+email+"','"+phone+"')";
+       
+        try{
+            Conn c1 = new Conn();
+            c1.s.executeUpdate(qry);
+            JOptionPane.showMessageDialog(null,"Employee Created");
+            setVisible(false);
+        }catch(Exception ee){
+            ee.printStackTrace();
+        }
+    }
+  });
         b2 = new JButton("Cancel");
+ b2.addActionListener(
+  new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+      setVisible(false);
+    }
+  });
         p1.add(b1);
         p1.add(b2);
         p1.setBorder(BorderFactory.createEmptyBorder(25,25,25,25));
@@ -82,23 +110,7 @@ public class New_Employee extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent ae){
         
-        String name = t1.getText();
-        String gender = c1.getSelectedItem();
-        String address = t3.getText();
-        String state = t4.getText();
-        String city = t5.getText();
-        String email = t6.getText();
-        String phone = t7.getText();
-        String qry = "insert into employee values(null,'"+name+"','"+gender+"','"+address+"','"+state+"','"+city+"','"+email+"','"+phone+"')";
-       
-        try{
-            Conn c1 = new Conn();
-            c1.s.executeUpdate(qry);
-            JOptionPane.showMessageDialog(null,"Employee Created");
-            this.setVisible(false);  
-        }catch(Exception ee){
-            ee.printStackTrace();
-        }
+      
     }
     public static void main(String s[]){
         new New_Employee().setVisible(true);
